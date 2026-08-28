@@ -4,6 +4,7 @@ import React, {
 } from "react"
 
 import "../style/home.scss"
+import { useAuth } from "../../auth/hooks/useAuth.js"
 
 import { useInterview } from "../hooks/useInterview.js"
 import { useNavigate } from "react-router"
@@ -14,6 +15,10 @@ const Home = () => {
         generateReport,
         reports,
     } = useInterview()
+
+    const { handleLogout } = useAuth()
+
+    
 
     const [jobDescription, setJobDescription] =
         useState("")
@@ -31,6 +36,16 @@ const Home = () => {
         useRef(null)
 
     const navigate = useNavigate()
+
+
+    const handleUserLogout = async () => {
+    try {
+        await handleLogout()
+        navigate("/login")
+    } catch (error) {
+        console.error("Logout failed:", error)
+    }
+}
 
     const handleResumeChange = (e) => {
     const file = e.target.files?.[0]
@@ -132,20 +147,31 @@ const Home = () => {
     return (
         <div className="home-page">
             <header className="page-header">
-                <h1>
-                    Create Your Custom{" "}
-                    <span className="highlight">
-                        Interview Plan
-                    </span>
-                </h1>
+    <div className="header-top">
+        <div>
+            <h1>
+                Create Your Custom{" "}
+                <span className="highlight">
+                    Interview Plan
+                </span>
+            </h1>
 
-                <p>
-                    Let our AI analyze the job
-                    requirements and your profile
-                    to build a personalized
-                    interview strategy.
-                </p>
-            </header>
+            <p>
+                Let our AI analyze the job
+                requirements and your profile
+                to build a personalized
+                interview strategy.
+            </p>
+        </div>
+
+        <button
+            className="logout-btn"
+            onClick={handleUserLogout}
+        >
+            Logout
+        </button>
+    </div>
+</header>
 
             {error && (
                 <div className="error-box">

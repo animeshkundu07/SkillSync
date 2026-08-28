@@ -70,15 +70,18 @@ export const useAuth = () => {
     }
 
     const handleLogout = async () => {
-        setLoading(true)
+    setLoading(true)
 
-        try {
-            await logout()
-            setUser(null)
-        } finally {
-            setLoading(false)
-        }
+    try {
+        await logout()
+        setUser(null)
+    } catch (error) {
+        console.error("Logout failed:", error)
+        throw error
+    } finally {
+        setLoading(false)
     }
+}
 
     useEffect(() => {
         let mounted = true
