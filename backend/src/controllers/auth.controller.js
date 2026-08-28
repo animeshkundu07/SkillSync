@@ -5,8 +5,8 @@ const tokenBlacklistModel = require("../models/blacklist.model")
 
 const cookieOptions = {
     httpOnly: true,
-    secure: false, // true in production with HTTPS
-    sameSite: "lax",
+    secure: true, // true in production with HTTPS
+    sameSite: "none",
     maxAge: 24 * 60 * 60 * 1000, // 1 day
 }
 
@@ -141,8 +141,8 @@ async function logoutUserController(req, res) {
 
         res.clearCookie("token", {
             httpOnly: true,
-            secure: false,
-            sameSite: "lax",
+            secure: true,
+            sameSite: "none",
         })
 
         return res.status(200).json({
