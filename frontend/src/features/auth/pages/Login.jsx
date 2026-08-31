@@ -97,7 +97,7 @@ const Login = () => {
                     </button>
                 </form>
 
-                <p>
+                <p className="switch-auth">
                     Don't have an account?{" "}
                     <Link to="/register">
                         Register
