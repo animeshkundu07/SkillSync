@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -155,5 +155,271 @@ code {
 
   100% {
     transform: translate(80px, 50px) scale(1.15);
+  }
+} */
+
+:root {
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #0b0f17;
+  --border: #252b38;
+  --code-bg: #171c27;
+
+  --accent: #ff0066;
+  --accent-bg: rgba(255, 0, 102, 0.1);
+  --accent-border: rgba(255, 0, 102, 0.5);
+
+  --social-bg: rgba(23, 28, 39, 0.5);
+
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px,
+    rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+
+  color: var(--text);
+  background: var(--bg);
+
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(255, 0, 102, 0.10),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(109, 74, 255, 0.10),
+      transparent 30%
+    ),
+    #0b0f17;
+
+  overflow-x: hidden;
+
+  position: relative;
+}
+
+/* =========================
+   AMBIENT BACKGROUND GLOW
+========================= */
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+
+  width: 450px;
+  height: 450px;
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  opacity: 0.10;
+
+  animation: floatOrb 15s ease-in-out infinite alternate;
+}
+
+/* Pink glow */
+
+body::before {
+  background: #ff0066;
+
+  top: -200px;
+  left: -150px;
+}
+
+/* Purple glow */
+
+body::after {
+  background: #6d4aff;
+
+  right: -200px;
+  bottom: -200px;
+
+  animation-delay: -5s;
+}
+
+/* =========================
+   ORB ANIMATION
+========================= */
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(40px, 25px) scale(1.08);
+  }
+
+  100% {
+    transform: translate(80px, 50px) scale(1.15);
+  }
+}
+
+/* =========================
+   SUBTLE TECH GRID
+========================= */
+
+body {
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(255, 0, 102, 0.10),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(109, 74, 255, 0.10),
+      transparent 30%
+    ),
+    #0b0f17;
+
+  background-size:
+    50px 50px,
+    50px 50px,
+    auto,
+    auto,
+    auto;
+}
+
+/* =========================
+   ROOT
+========================= */
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+
+  margin: 0 auto;
+
+  text-align: center;
+
+  border-inline: 1px solid var(--border);
+
+  min-height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   HEADINGS
+========================= */
+
+h1,
+h2 {
+  font-family: var(--heading);
+
+  font-weight: 500;
+
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+
+  letter-spacing: -1.68px;
+
+  margin: 32px 0;
+
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+
+h2 {
+  font-size: 24px;
+
+  line-height: 118%;
+
+  letter-spacing: -0.24px;
+
+  margin: 0 0 8px;
+
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+/* =========================
+   CODE
+========================= */
+
+code,
+.counter {
+  font-family: var(--mono);
+
+  display: inline-flex;
+
+  border-radius: 4px;
+
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+
+  line-height: 135%;
+
+  padding: 4px 8px;
+
+  background: var(--code-bg);
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none;
   }
 }
