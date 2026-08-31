@@ -161,6 +161,7 @@ code {
 :root {
   --text: #9ca3af;
   --text-h: #f3f4f6;
+
   --bg: #0b0f17;
   --border: #252b38;
   --code-bg: #171c27;
@@ -186,6 +187,7 @@ code {
   background: var(--bg);
 
   color-scheme: dark;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 
@@ -197,40 +199,74 @@ code {
   }
 }
 
-/* =========================
-   BODY
-========================= */
+
+/* =========================================================
+   HTML + BODY
+========================================================= */
+
+html {
+  min-height: 100%;
+  background: #0b0f17;
+}
 
 body {
   margin: 0;
+
   min-width: 320px;
   min-height: 100vh;
-
-  background:
-    radial-gradient(
-      circle at 10% 15%,
-      rgba(255, 0, 102, 0.10),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      rgba(109, 74, 255, 0.10),
-      transparent 30%
-    ),
-    #0b0f17;
 
   overflow-x: hidden;
 
   position: relative;
+
+  background:
+    /* Technical grid */
+    linear-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+
+    /* Pink ambient glow */
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(255, 0, 102, 0.14),
+      transparent 30%
+    ),
+
+    /* Purple ambient glow */
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(109, 74, 255, 0.12),
+      transparent 32%
+    ),
+
+    /* Base */
+    #0b0f17;
+
+  background-size:
+    50px 50px,
+    50px 50px,
+    auto,
+    auto,
+    auto;
+
+  background-attachment: fixed;
 }
 
-/* =========================
-   AMBIENT BACKGROUND GLOW
-========================= */
+
+/* =========================================================
+   ANIMATED AMBIENT GLOW
+========================================================= */
 
 body::before,
 body::after {
   content: "";
+
   position: fixed;
 
   width: 450px;
@@ -242,12 +278,14 @@ body::after {
 
   pointer-events: none;
 
-  z-index: -1;
+  z-index: 0;
 
   opacity: 0.10;
 
-  animation: floatOrb 15s ease-in-out infinite alternate;
+  animation:
+    floatOrb 15s ease-in-out infinite alternate;
 }
+
 
 /* Pink glow */
 
@@ -257,6 +295,7 @@ body::before {
   top: -200px;
   left: -150px;
 }
+
 
 /* Purple glow */
 
@@ -269,62 +308,35 @@ body::after {
   animation-delay: -5s;
 }
 
-/* =========================
-   ORB ANIMATION
-========================= */
+
+/* =========================================================
+   AMBIENT GLOW ANIMATION
+========================================================= */
 
 @keyframes floatOrb {
   0% {
-    transform: translate(0, 0) scale(1);
+    transform:
+      translate(0, 0)
+      scale(1);
   }
 
   50% {
-    transform: translate(40px, 25px) scale(1.08);
+    transform:
+      translate(40px, 25px)
+      scale(1.08);
   }
 
   100% {
-    transform: translate(80px, 50px) scale(1.15);
+    transform:
+      translate(80px, 50px)
+      scale(1.15);
   }
 }
 
-/* =========================
-   SUBTLE TECH GRID
-========================= */
 
-body {
-  background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.018) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.018) 1px,
-      transparent 1px
-    ),
-    radial-gradient(
-      circle at 10% 15%,
-      rgba(255, 0, 102, 0.10),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      rgba(109, 74, 255, 0.10),
-      transparent 30%
-    ),
-    #0b0f17;
-
-  background-size:
-    50px 50px,
-    50px 50px,
-    auto,
-    auto,
-    auto;
-}
-
-/* =========================
+/* =========================================================
    ROOT
-========================= */
+========================================================= */
 
 #root {
   width: 1126px;
@@ -342,11 +354,22 @@ body {
   flex-direction: column;
 
   box-sizing: border-box;
+
+  /*
+    IMPORTANT:
+    Keeps the animated body background visible.
+  */
+  background: transparent !important;
+
+  position: relative;
+
+  z-index: 1;
 }
 
-/* =========================
+
+/* =========================================================
    HEADINGS
-========================= */
+========================================================= */
 
 h1,
 h2 {
@@ -388,9 +411,10 @@ p {
   margin: 0;
 }
 
-/* =========================
+
+/* =========================================================
    CODE
-========================= */
+========================================================= */
 
 code,
 .counter {
@@ -413,9 +437,10 @@ code {
   background: var(--code-bg);
 }
 
-/* =========================
+
+/* =========================================================
    ACCESSIBILITY
-========================= */
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   body::before,
