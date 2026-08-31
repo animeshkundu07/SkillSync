@@ -99,16 +99,18 @@ main {
             -webkit-text-fill-color: transparent;
         }
 
-        > p {
+        .subtitle {
             text-align: center;
             font-size: 0.85rem;
             color: $text-muted;
-
-            a {
-                font-weight: 600;
-            }
+            margin-top: -0.5rem;
         }
     }
+    .switch-auth {
+            text-align: center;
+            font-size: 0.85rem;
+            color: $text-muted;
+        }
 
     form {
         display: flex;
