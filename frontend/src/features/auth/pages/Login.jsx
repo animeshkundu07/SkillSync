@@ -43,6 +43,7 @@ const Login = () => {
         <main>
             <div className="form-container">
                 <h1>Login</h1>
+                <p className="subtitle">Welcome back — sign in to continue</p>
 
                 {error && (
                     <p className="error-message">
