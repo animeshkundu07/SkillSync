@@ -52,6 +52,7 @@ const Register = () => {
         <main>
             <div className="form-container">
                 <h1>Register</h1>
+                <p className="subtitle">Create an account to get started</p>
 
                 {error && (
                     <p className="error-message">
