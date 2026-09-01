@@ -53,6 +53,7 @@ const Register = () => {
             <div className="form-container">
                 <img src="/logo-wordmark.svg" alt="SkillSync" style={{ height: '48px', marginBottom: '1rem' }} />
                 <h1>Register</h1>
+                <p className="subtitle">Create an account to get started</p>
 
                 {error && (
                     <p className="error-message">

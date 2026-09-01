@@ -44,6 +44,7 @@ const Login = () => {
             <div className="form-container">
                 <img src="/logo-wordmark.svg" alt="SkillSync" style={{ height: '48px', marginBottom: '1rem' }} />
                 <h1>Login</h1>
+                <p className="subtitle">Welcome back — sign in to continue</p>
 
                 {error && (
                     <p className="error-message">
@@ -97,7 +98,7 @@ const Login = () => {
                     </button>
                 </form>
 
-                <p>
+                <p className="switch-auth">
                     Don't have an account?{" "}
                     <Link to="/register">
                         Register
