@@ -42,6 +42,7 @@ const Login = () => {
     return (
         <main>
             <div className="form-container">
+                <img src="/logo-wordmark.svg" alt="SkillSync" style={{ height: '48px', marginBottom: '1rem' }} />
                 <h1>Login</h1>
 
                 {error && (

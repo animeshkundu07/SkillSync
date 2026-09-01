@@ -149,6 +149,7 @@ const Home = () => {
             <header className="page-header">
     <div className="header-top">
         <div>
+        <img src="/logo-wordmark.svg" alt="SkillSync" style={{ height: '48px', marginBottom: '1rem' }} />
             <h1>
                 Create Your Custom{" "}
                 <span className="highlight">
